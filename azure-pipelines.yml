@@ -28,15 +28,6 @@ stages:
         command: 'build'
         projects: '**/*.csproj'
         arguments: '--configuration $(buildConfiguration)'
-    - task: DotNetCoreCLI@2
-      displayName: "Unit test Huxley 2"
-      env:
-        DOTNET_CLI_TELEMETRY_OPTOUT: true
-        DOTNET_NOLOGO: true
-      inputs:
-        command: 'test'
-        projects: '**/*Tests/*.csproj'
-        arguments: '--configuration $(buildConfiguration) --collect:"XPlat Code Coverage"'
     - task: PublishCodeCoverageResults@1
       inputs:
         codeCoverageTool: 'cobertura'
